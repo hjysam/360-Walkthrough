@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!--Libraries-->
+		<meta
+			name="viewport"
+			content="width=device-width, user-scalable=no,
+		initial-scale=1"
+		/>
+		<link rel="icon" type="image/png" href="assets/fav.png" />
+		<script defer src="lib/jquery.min.js"></script>
+		<script defer src="lib/anime.min.js"></script>
+		<script src="lib/aframe.min.js"></script>
+		<script defer src="lib/aframe-gif-shader.min.js"></script>
+		<script defer src="lib/aframe-look-at-component.min.js"></script>
+		<script defer src="lib/aframe-animation-component.min.js"></script>
+		<script defer src="lib/aframe-event-set-component.min.js"></script>
+		<script>src = "https://aframe.io/releases/0.7.1/aframe.min.js"</script>
+		<link
+			rel="preload"
+			href="assets/bttn.min.css"
+			as="style"
+			onload="this.onload=null;this.rel='stylesheet'"
+		/>
+		<noscript><link rel="stylesheet" href="assets/bttn.min.css" /></noscript>
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<script defer src="lib/aframe-rounded-component.min.js"></script>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+			rel="stylesheet"
+		/>
+		<!--script defer src="lib/horizontalDialog.min.js"></script-->
+		<!--script defer src="lib/development/horizontalDialog.js"></script-->
+		<script defer src="lib/development/horizontalDialogImage.js"></script>
+		<script defer src = "lib/videoDialog.js"></script>
+		<script defer src="lib/mcq-lib.min.js"></script>
+		<!--script defer src="lib/script.min.js"></script-->
+		<script defer src="lib/development/script.js"></script>
+		<link
+			rel="preload"
+			href="assets/animate.min.css"
+			as="style"
+			onload="this.onload=null;this.rel='stylesheet'"
+		/>
+		<noscript><link rel="stylesheet" href="assets/animate.min.css" /></noscript>
+		<link rel="stylesheet" href="lib/loading.css" />
+		<!--link rel="stylesheet" href="styles.min.css"-->
+		<link rel="stylesheet" href="styles.css"-->
+		<title>CEMs Virtual Tour</title>
+	</head>
+	<body>
+		<!--5 seconds loading screen-->
+		<div id="splashscreen">
+			<img id="logo" src="assets/sp_informal_logo.png" />
+			<div class="wrapper">
+				<div class="box-wrap">
+					<div class="box one"></div>
+					<div class="box two"></div>
+					<div class="box three"></div>
+					<div class="box four"></div>
+					<div class="box five"></div>
+					<div class="box six"></div>
+				</div>
+			</div>
+		</div>
+		<!--Description of the application-->
+		<div id="contentPage">
+			<div id="leftHalf"></div>
+			<div id="rightHalf">
+				<div id="content">
+					<h2 id="title">(Insert Title)360 Central Air Conditioning Virtual Tour</h2>
+					<p id="description">
+						(Insert Description here)
+						Welcome to 360 Central Air Conditioning Virtual Tour! 
+						In this application, you will be able to learn about the Central Air Conditioning System. 
+						There are 3 locations that you need to visit to complete the tour. 
+						You can use the white dots to bring you through the entire tour.
+						Along the way you will be able to see “Plus icon” that allow you to gain an
+						insight of the different equipment. Have Fun!!
+					</p>
+					<button
+						id="btnEnter"
+						onclick="enterVR()"
+						class="bttn-unite bttn-lg bttn-default"
+					>
+						Enter
+					</button>
+				</div>
+			</div>
+		</div>
+		<!--Aframe Canvas-->
+		<div id="aframeCanvas">
+			<div id="blocker"></div>
+			<!--Control tutorial-->
+			<div id="controlPopup">
+				<div id="popupContainer" onclick="slideOut(this)">
+					<p id="popupTitle">Controls</p>
+					<div id="popupContent">
+						<span> Click</span>
+						<img class="popupIcons" src="assets/mouse.png" />
+						<span>+ Drag to move around </span>
+						<div class="break"></div>
+						<div class="break"></div>
+						<span>Click</span>
+						<img id="arrowIcon" class="popupIcons" src="assets/arrow.png" />
+						<span>to teleport</span>
+						<div class="break"></div>
+						<!-- <span>Click</span>
+						<img class="popupIcons" src="assets/mcq1.png" />
+						<span>to answer multiple choice question</span>
+						<div class="break"></div> -->
+						<span>Hover over</span>
+						<img class="popupIcons" src="assets/plus.png" />
+						<span>for more information</span>
+						<div class="break"></div>
+					</div>
+				</div>
+			</div>
+			<!--Aframe canvas-->
+			<a-scene>
+				<!--Images Collection-->
+				<a-assets timeout="99999">
+					
+					<!--img id="loc1" src="360Images/IMG_20210628_143320_00_374.jpg" />
+					<img id="loc2" src="360Images/IMG_20210628_143411_00_375.jpg" />					
+					<img id="loc3" src="360Images/IMG_20210628_144033_00_382.jpg" />
+					<img id="loc4" src="360Images/IMG_20210628_144144_00_383.jpg" />
+					<img id="loc5" src="360Images/IMG_20210628_144452_00_387.jpg" />
+					<img id="loc6" src="360Images/IMG_20210628_144544_00_388.jpg" />
+					<img id="loc7" src="360Images/IMG_20210628_144817_00_389.jpg" />
+					<img id="loc8" src="360Images/IMG_20210628_145012_00_391.jpg" />
+					<img id="loc9" src="360Images/IMG_20210628_145128_00_392.jpg" />
+					<img id="loc10" src="360Images/IMG_20210628_155328_00_396.jpg" />
+					<img id="loc11" src="360Images/IMG_20210628_155516_00_398.jpg" />
+					<img id="loc12" src="360Images/IMG_20210628_155606_00_399.jpg" /-->
+					
+					<img id="loc1" src="360Images/IMG_20211004_135820_00_400.jpg" />
+					<img id="loc2" src="360Images/IMG_20211004_140131_00_402.jpg" />					
+					<img id="loc3" src="360Images/IMG_20211004_140838_00_407.jpg" />
+					<img id="loc4" src="360Images/IMG_20211004_141113_00_409.jpg" />
+					<img id="loc5" src="360Images/IMG_20211004_141333_00_410.jpg" />
+					<img id="loc6" src="360Images/IMG_20211004_141521_00_412.jpg" />
+					<img id="loc7" src="360Images/IMG_20211004_140250_00_403.jpg" />
+					<img id="loc8" src="360Images/IMG_20211004_140400_00_404.jpg" />
+					<img id="loc9" src="360Images/IMG_20211004_142310_00_414.jpg" />
+					<img id="loc10" src="360Images/IMG_20211004_142504_00_417.jpg" />
+					<img id="loc11" src="360Images/IMG_20211004_142559_00_418.jpg" />
+					<img id="loc12" src="360Images/IMG_20211004_142721_00_421.jpg" />
+					<img id="arrow" src="assets/arrow.png" />
+					<video id="Simulation1"  src="Videos/Eye Tracker Video.mp4"></video>
+				</a-assets>
+				<!--360 Skybox-->
+				<!--sandra edited rotation to fit photos-->>
+				<a-sky id="skybox" radius="10" src="#loc1" rotation="-4.85 270 0"> </a-sky>
+				<!--Camera & Cursor-->
+				<a-entity
+					id="cam"
+					position="0 0 0"
+					camera
+					look-controls="reverseMouseDrag: true; reverseTouchDrag: true;"
+					wasd-controls-enabled="false"
+					cursor="rayOrigin: mouse"
+				>
+				</a-entity>
+				<!--Hotspots UI-->
+				<a-entity id="spots" hotspots>
+					<a-entity id="group-point1">
+						<!--floor-->
+						<!-- <a-image
+							id="p1loc2spot"
+							class="arrowPointer"
+							spot="linkto:#loc2;spotgroup:group-point2;
+						nameLink:Area2;"
+							position="-0.485 -3 -8.16"
+							rotation="90 180 0"
+							scale="0.9 0.9 0.9"
+						></a-image> -->
+						<a-image
+							id="p1loc2aspot"
+							class="arrowPointer"
+							spot="linkto:#loc2;spotgroup:group-point2;
+						nameLink:Area2;"
+							position="0.013 0 -8.16"
+							rotation="0 180 90"
+							scale="0.9 0.9 0.9"
+						></a-image>							
+						<!-- <a-entity
+							id="dialog1"
+							position="-3.94 -0.30 -3.81"
+							dialog-popup="
+						title: AHU (Air Handling Unit);
+						body:-An air handling unit conditions and distributes air within a building;		  
+						image: hotspots/AHU.jpg;"
+						></a-entity> -->
+						<!--a-text
+							value="Chiller Room"
+							rotation="0 180 0"
+							wrap-count="20"
+							font="assets/raleway.json"
+							shader="msdf"
+							position="-0.2 0 3.2"
+							align="center"
+						></a-text-->
+					</a-entity>
+					<a-entity id="group-point2" visible="false">
+						<!--floor-->
+						<!-- <a-image
+							id="p2loc1spot"
+							class="arrowPointer"
+							spot="linkto:#loc1;spotgroup:group-point1;
+						nameLink:Area1;"
+							position="0.2 -3 7.9"
+							rotation="90 0 0"
+							scale="0.9 0.9 0.9"
+						></a-image> -->
+						<a-image
+							id="p2loc1aspot"
+							class="arrowPointer"
+							spot="linkto:#loc1;spotgroup:group-point1;
+						nameLink:Area1;"
+							position="-0.27 -0.269 9.645"
+							rotation="0 0 0"
+							scale="1.1 1.1 1.1"
+						></a-image>
+						
+						<a-image
+							id="p2loc3spot"
+							class="arrowPointer"
+							spot="linkto:#loc3;spotgroup:group-point3;
+						nameLink:Area1;"
+							position="-8.026 -0.436 4.336"
+							rotation="0 -1.65 0"
+							scale="1.5 1.5 1.5"
+						></a-image>
+						<!--floor-->
+						<!-- <a-image
+							id="p2loc7spot"
+							class="arrowPointer"
+							spot="linkto:#loc7;spotgroup:group-point7;
+						nameLink:Area3;"
+							position="-8.78 -3.53 0.514"
+							rotation="90 270 0"
+							scale="0.93 0.93 0.93"
+						></a-image> -->
+					
+						<a-image
+							id="p2loc7aspot"
+							class="arrowPointer"
+							spot="linkto:#loc7;spotgroup:group-point7;
+						nameLink:Area3;"
+							position="-9.80 -0.08 -0.329"
+							rotation="0 -90 0"
+							scale="0.93 0.93 0.93"
+						></a-image>
+						<!--a-entity
+							id="dialog2"
+							position="-1.4 -1.2 3.7"
+							dialog-popup="
+						title: Sensors for filter in AHU;
+						body: - The sensors record the pressure before and after the filter.\n\n- High pressure loss across a filter is an indication of a dirty filter.;		  
+						image: hotspots/ahumodel.jpg;"
+						></a-entity-->
+					</a-entity>
+					<a-entity id="group-point3" visible="false">
+						<!--floor-->
+						<!-- <a-image
+							id="p3loc4spot"
+							class="arrowPointer"
+							spot="linkto:#loc4;spotgroup:group-point4;
+						nameLink:Area2;"
+							position="-2.4 -3.51 7.56"
+							rotation="90 95 0"
+							scale="0.9 0.9 0.9"
+						></a-image> -->
+						<a-image
+							id="p3loc4aspot"
+							class="arrowPointer"
+							spot="linkto:#loc4;spotgroup:group-point4;
+						nameLink:Area2;"
+							position="-1.5 0.316 7.56"
+							rotation="180 0 -96"
+							scale="0.9 0.9 0.9"
+						></a-image>
+						<!--floor-->
+						<!-- <a-image
+							id="p3loc5spot"
+							class="arrowPointer"
+							spot="linkto:#loc5;spotgroup:group-point5;
+						nameLink:Area4;"
+							position="-8.63 -3.66 -0.557"
+							rotation="90 5 0"
+							scale="0.9 0.9 0.9"
+						></a-image> -->
+						<a-image
+							id="p3loc5aspot"
+							class="arrowPointer"
+							spot="linkto:#loc5;spotgroup:group-point5;
+						nameLink:Area4;"
+							position="-8.2 0.458 0.6"
+							rotation="0 -90 -95"
+							scale="1 1 1"
+						></a-image>
+						<a-image
+							id="p3loc2spot"
+							class="arrowPointer"
+							spot="linkto:#loc2;spotgroup:group-point2;
+						nameLink:Area4;"
+							position="0.96 -0.37 -7.28"
+							rotation="0 180 180"
+							scale="2.5 2.5 2.5"
+						></a-image>
+						<!--a-entity
+							id="dialog3"
+							position="0.7 -3.3 3"
+							dialog-popup="
+						title: Condensate Pipe;
+						body:- It will drain the condensate water from the coil in the AHU to be discharged in the floor trap.\n\nSustainability\n- For sustainability, all the condensate water from the AHUs is collected and used to top up the condenser water at the cooling tower.;		  
+						image: hotspots/condensatepipe.jpg;"
+						></a-entity-->
+					</a-entity>
+					<a-entity id="group-point4" visible="false">
+						<!--floor-->
+						<!-- <a-image
+							id="p4loc3spot"
+							class="arrowPointer"
+							spot="linkto:#loc3;spotgroup:group-point3;
+						nameLink:Area3;"
+							position="1.6 -4.40 -8.08"
+							rotation="90 170 0"
+							scale="0.9 0.9 0.9"
+						></a-image>	 -->
+						<!--go out the door--> 
+						<a-entity
+							id="dialog4"
+							position="-5.94 -0.17 1.868"						
+							dialog-popup="
+						title: Chilled Water Pipe;
+						body:- The Chilled Water Supply (CHWS) pipe will supply chilled water to the AHU.\n\n- Heat will be absorbed by the chilled water from the coil in the AHU and return back to the chiller through the Chilled Water return (CHWR) pipe.;
+						image: hotspots/Full Mission Ship-handling Simulator.PNG;"
+						></a-entity>
+						<a-image
+							id="p4loc3aspot"
+							class="arrowPointer"
+							spot="linkto:#loc2;spotgroup:group-point2;
+						nameLink:Area3;"
+							position="1.8 0.11 -9.46"
+							rotation="0 180 0"
+							scale="1.15 1.15 1.15"
+						></a-image>	
+						<a-image
+							id="p4loc3bspot"
+							class="arrowPointer"
+							spot="linkto:#loc5;spotgroup:group-point5;
+						nameLink:Area3;"
+							position="-4.53 0.392 -8.38"
+							rotation="0 -142 10"
+							scale="1.1 1.1 1.1"
+						></a-image>						
+						<a-entity
+							id="dialog3"
+							position="4.862 0.065 -0.144"							
+							dialog-popup="
+						title: Chilled Water Pipe;
+						body:- The Chilled Water Supply (CHWS) pipe will supply chilled water to the AHU.\n\n- Heat will be absorbed by the chilled water from the coil in the AHU and return back to the chiller through the Chilled Water return (CHWR) pipe.;
+						image: hotspots/Interactive Smart Board.PNG;"
+						></a-entity>
+						<a-entity
+							id="Video2"
+							position="-3.80 -1.95 4.805"	
+							scale="0.7 0.7 0.7"						
+							video-popup="
+						video :Videos/Eye Tracker Video.mp4;
+						src: hotspots/Tobii Station.png;
+						title: Insert Video Description here;"										
+						></a-entity>
+						<a-entity
+							id="dialog1"
+							position="-4.84 -1.68 -2.37"						
+							dialog-popup="
+						title: Chilled Water Pipe;
+						body:- The Chilled Water Supply (CHWS) pipe will supply chilled water to the AHU.\n\n- Heat will be absorbed by the chilled water from the coil in the AHU and return back to the chiller through the Chilled Water return (CHWR) pipe.;
+						image: hotspots/Advanced Instructor and Assessment System.PNG;"
+						></a-entity>
+						
+					</a-entity>
+					<a-entity id="group-point5" visible="false">
+						<!--floor-->
+						<!-- <a-image
+							id="p5loc3spot"
+							class="arrowPointer"
+							spot="linkto:#loc3;spotgroup:group-point3;
+						nameLink:Area4;"
+							position="8.255 -4.58 -1.065"
+							rotation="90 275 0"
+							scale="0.9 0.9 0.9"
+						></a-image> -->
+						
+						<a-image
+							id="p5loc3aspot"
+							class="arrowPointer"
+							spot="linkto:#loc3;spotgroup:group-point3;
+						nameLink:Area4;"
+							position="8.255 -0.19 -0.018"
+							rotation="0 90 180"
+							scale="0.9 0.9 0.9"
+						></a-image>
+						<!--floor-->
+						<!-- <a-image
+							id="p5loc6spot"
+							class="arrowPointer"
+							spot="linkto:#loc6;spotgroup:group-point6;
+						nameLink:Area6;"
+							position="-3.84 -4.61 7.29"
+							rotation="90 185 0"
+							scale="0.9 0.9 0.9"
+						></a-image> -->
+						
+						<a-image
+							id="p5loc6aspot"
+							class="arrowPointer"
+							spot="linkto:#loc6;spotgroup:group-point6;
+						nameLink:Area6;"
+							position="-6.42 -0.26 5.48"
+							rotation="0 -31 180"
+							scale="1.0 1.0	1.0 "
+						></a-image>							
+					</a-entity>
+					<a-entity id="group-point6" visible="false">
+						<!--floor-->
+						<!-- <a-image
+							id="p6loc5spot"
+							class="arrowPointer"
+							spot="linkto:#loc5;spotgroup:group-point5;
+						nameLink:Area5;"
+							position="5.988 -4.18 -6.03"
+							rotation="90 5 0"
+							scale="0.9 0.9 0.9"
+						></a-image>	 -->
+						<a-image
+							id="p6loc5aspot"
+							class="arrowPointer"
+							spot="linkto:#loc5;spotgroup:group-point5;
+						nameLink:Area5;"
+							position="5.352 0.127 -6.03"
+							rotation="0 137 180"
+							scale="0.9 0.9 0.9"
+						></a-image>					
+						<a-entity
+							id="dialog5"
+							position="0.18 -1.94 5.67"
+							dialog-popup="
+						title: Centrifugal fan in the AHU;
+						body:- To supply cooled air into the A/C space.\n\nMaintenance\n- Cleaning of fan housing and blades.\n- Lubricate and adjust of fan belts.\n- Monitor of vibration and noise.;	  
+						image: hotspots/Multi Functional Operator Station.PNG;"
+						></a-entity>
+						<a-entity
+							id="dialog7"
+							position="-0.03 -1.90 -5.65"
+							
+							dialog-popup="
+						title: Centrifugal fan in the AHU;
+						body:- To supply cooled air into the A/C space.\n\nMaintenance\n- Cleaning of fan housing and blades.\n- Lubricate and adjust of fan belts.\n- Monitor of vibration and noise.;	  
+						image: hotspots/Port and Starboard Bridge Console.PNG;"
+						></a-entity>
+						
+						<a-entity
+							id="dialog6"
+							position="-6.48 -0.67 0.02"
+							dialog-popup="
+						body:- To supply cooled air into the A/C space.\n\nMaintenance\n- Cleaning of fan housing and blades.\n- Lubricate and adjust of fan belts.\n- Monitor of vibration and noise.;	  
+						image: hotspots/Repeater Screen.PNG;"
+						
+						></a-entity>
+					
+						
+					</a-entity>
+					<a-entity id="group-point7" visible="false">
+						<!--floor-->
+						<!-- <a-image
+							id="p7loc2spot"
+							class="arrowPointer"
+							spot="linkto:#loc2;spotgroup:group-point2;
+						nameLink:Area6;"
+							position="8.688 -3.34 0.425"
+							rotation="90 0 0"
+							scale="1.0 1.0 1.0"
+						></a-image> -->
+						<a-image
+							id="p7loc2aspot"
+							class="arrowPointer"
+							spot="linkto:#loc2;spotgroup:group-point2;
+						nameLink:Area6;"
+							position="8.688 0.16 -0.039"
+							rotation="0 90 90"
+							scale="1.0 1.0 1.0"
+						></a-image>
+						<!--floor-->
+						<!-- <a-image
+							id="p7loc8spot"
+							class="arrowPointer"
+							spot="linkto:#loc8;spotgroup:group-point8;
+						nameLink:Area6;"
+							position="-9.29 -2.25 -0.154"
+							rotation="90 0 0"
+							scale="0.75 0.75 0.75"
+						></a-image> -->
+						<a-image
+							id="p7loc8aspot"
+							class="arrowPointer"
+							spot="linkto:#loc8;spotgroup:group-point8;
+						nameLink:Area6;"
+							position="-9.41 0.14 0.103"
+							rotation="0 -90 -90"
+							scale="1 1 1"
+						></a-image>
+						<!-- <a-entity
+							id="dialog9"
+							position="-4.45 1.87 3.68"
+							dialog-popup="
+						title: Filter in the AHU;
+						body:- Filters are used to prevent particulates from entering and re-circulating within a building.\n- Filters also protect fan and cooling coil from being clogged with dirt.\n- Clogged filters will increase resistance to air flow affecting efficiency of the system.\n- Filters must be cleaned/replaced regularly.\n- A clogged filter may give way causing dust collected to spread to the air conditioned space and cooling coil. Improperly fitted filter panels will result in gaps allowing dust to bypass the filters.;	  
+						image: hotspots/filters.jpg;"
+						></a-entity> -->
+					</a-entity>
+					<a-entity id="group-point8" visible="false" >
+						<!--floor-->
+						<!-- <a-image
+							id="p8loc7spot"
+							class="arrowPointer"
+							spot="linkto:#loc7;spotgroup:group-point7;
+						nameLink:Area1;"
+							position="9.0 -2.4 -0.25"
+							rotation="90 0 0"
+							scale="0.9 0.9 0.9"
+						></a-image> -->
+						<a-image
+							id="p8loc7aspot"
+							class="arrowPointer"
+							spot="linkto:#loc7;spotgroup:group-point7;
+						nameLink:Area1;"
+							position="9.0 0.04 -0.37"
+							rotation="0 90 90"
+							scale="0.9 0.9 0.9"
+						></a-image>
+						<a-image
+							id="p8loc9spot"
+							class="arrowPointer"
+							spot="linkto:#loc9;spotgroup:group-point9;
+						nameLink:Area9;"
+							position="0.958 -0.06 9.20"
+							rotation="0 0 0"
+							scale="2.6 2.6 2.6 "
+						></a-image>
+						
+						<!--a-text
+							value="Chiller Room"
+							rotation="0 90 0"
+							wrap-count="28"
+							font="assets/raleway.json"
+							shader="msdf"
+							position="-2.9 1 0.1"
+							align="center"
+						></a-text-->
+						<!--a-text
+							value="Cooling Tower"
+							rotation="0 0 0"
+							wrap-count="20"
+							font="assets/raleway.json"
+							shader="msdf"
+							position="-0.1 1 -3"
+							align="center"
+						></a-text-->
+						<!--a-text
+							value="AHU Room"
+							rotation="0 180 0"
+							wrap-count="20"
+							font="assets/raleway.json"
+							shader="msdf"
+							position="0.2 -2 3.8"
+							align="center"
+						></a-text-->
+					</a-entity>
+					<a-entity id="group-point9" visible="false">
+						<a-image
+							id="p9loc8spot"
+							class="arrowPointer"
+							spot="linkto:#loc8;spotgroup:group-point8;
+						nameLink:Area8;"
+							position="0.028 -0.18 -9.34"
+							rotation="0 0 0"
+							scale="3 3 3"
+						></a-image>
+						<!--floor-->
+						<!-- <a-image
+							id="p9loc10spot"
+							class="arrowPointer"
+							spot="linkto:#loc10;spotgroup:group-point10;
+						nameLink:Area10;"
+							position="-5.5 -3 0.3"
+							rotation="90 0 0"
+							scale="1 1 1"
+						></a-image> -->
+						
+						<a-image
+							id="p9loc10aspot"
+							class="arrowPointer"
+							spot="linkto:#loc10;spotgroup:group-point10;
+						nameLink:Area10;"
+							position="-7.3 0.4 0.3"
+							rotation="0 -90 -90"
+							scale="1 1 1"
+						></a-image>
+						<!--floor-->
+						<!-- <a-image
+							id="p9loc11spot"
+							class="arrowPointer"
+							spot="linkto:#loc11;spotgroup:group-point11;
+						nameLink:Area10;"
+							position="-0.61 -4.7 7.79"
+							rotation="90 0 0"
+							scale="1 1 1"
+						></a-image> -->
+						<a-image
+							id="p9loc11aspot"
+							class="arrowPointer"
+							spot="linkto:#loc11;spotgroup:group-point11;
+						nameLink:Area10;"
+							position="-0.61 0.28 7.79"
+							rotation="0 0 0"
+							scale="1.3 1.3 1.3"
+						></a-image>
+						<!--a-text
+							value="Exit Chiller Room"
+							rotation="0 270 0"
+							wrap-count="24"
+							font="assets/raleway.json"
+							shader="msdf"
+							position="3.2 1 0.1"
+							align="center"
+						></a-text-->
+					</a-entity>
+					<a-entity id="group-point10" visible="false">
+						<!--floor-->
+						<!-- <a-image
+							id="p10loc9spot"
+							class="arrowPointer"
+							spot="linkto:#loc9;spotgroup:group-point9;
+						nameLink:Area9;"
+							position="7.836 -4.86 -1.23"							
+							scale="1.2 1.2 1.2"
+						></a-image> -->
+						<a-image
+							id="p10loc9aspot"
+							class="arrowPointer"
+							spot="linkto:#loc9;spotgroup:group-point9;
+						nameLink:Area9;"
+							position="7.529 -0.34 -0.9"
+							rotation="0 90 0"							
+							scale="1 1 1"
+						></a-image>
+						
+						<!-- <a-entity
+							id="dialog10"
+							position="-1.33 -1.53 4.67"
+							dialog-popup="
+						title: Chilled Water Pump;
+						body:- The chilled water pipes are insulation to prevent condensation and to prevent heat gain.\n\n- Vapour barriers are used to protect the insulation and prevent vapour from entering the insulation.;	  
+						image: hotspots/chilledwaterpump.jpg;"
+						></a-entity> -->
+						
+					</a-entity>
+					<a-entity id="group-point11" visible="false">
+						<!-- <a-image
+							id="p11loc9spot"
+							class="arrowPointer"
+							spot="linkto:#loc9;spotgroup:group-point9;
+						nameLink:Area10;"
+							position="-0.02 -5.05 -7.9"
+							rotation="90 90 0"
+							scale="0.7 0.7 0.7"
+						></a-image> -->
+						
+						<a-image
+							id="p11loc9aspot"
+							class="arrowPointer"
+							spot="linkto:#loc9;spotgroup:group-point9;
+						nameLink:Area10;"
+							position="-1.17 -1.23 -7.9"
+							rotation="0 180 90"
+							scale="2 2 2"
+						></a-image>
+						<!--floor-->
+						<!-- <a-image
+							id="p11loc12spot"
+							class="arrowPointer"
+							spot="linkto:#loc12;spotgroup:group-point12;
+						nameLink:Area12;"
+							position="-8.13 -4.7 -0.77"
+							rotation="90 180 0"
+							scale="1 1 1"
+						></a-image> -->
+						
+						<a-image
+							id="p11loc12aspot"
+							class="arrowPointer"
+							spot="linkto:#loc12;spotgroup:group-point12;
+						nameLink:Area12;"
+							position="-8.13 -0.24 -0.56"
+							rotation="0 -110 90"
+							scale="1 1 1"
+						></a-image>
+					</a-entity>
+					<a-entity id="group-point12" visible="false">
+						<!--floor-->
+						<!-- <a-image
+							id="p12loc11spot"
+							class="arrowPointer"
+							spot="linkto:#loc11;spotgroup:group-point11;
+						nameLink:Area11;"
+							position="7.62 -4.97 -2.79"
+							rotation="90 0 0"
+							scale="0.9 0.9 0.9"
+						></a-image> -->
+						
+						<a-image
+							id="p12loc11aspot"
+							class="arrowPointer"
+							spot="linkto:#loc11;spotgroup:group-point11;
+						nameLink:Area11;"
+							position="7.62 -0.17 -2.03"
+							rotation="0 90 90"
+							scale="1.1 1.1 1.1"
+						></a-image>
+						<a-entity
+							id="dialog8"
+							position="-0.15 -1.30 4.92"
+							dialog-popup="
+						title: Chilled Water Pump;
+						body:- The chilled water pipes are insulation to prevent condensation and to prevent heat gain.\n\n- Vapour barriers are used to protect the insulation and prevent vapour from entering the insulation.;	  
+						image: hotspots/VTIS Station.PNG;"
+						></a-entity>
+						
+					<!-- </a-entity>
+					
+					
+						></a-image>
+					</a-entity> -->
+				</a-entity>
+			</a-scene>
+		</div>
+	</body>
+</html>
