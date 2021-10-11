@@ -107,14 +107,15 @@
 						<img id="arrowIcon" class="popupIcons" src="assets/arrow.png" />
 						<span>to teleport</span>
 						<div class="break"></div>
-						<!-- <span>Click</span>
-						<img class="popupIcons" src="assets/mcq1.png" />
+						
+						<!--<img class="popupIcons" src="assets/mcq1.png" />
 						<span>to answer multiple choice question</span>
 						<div class="break"></div> -->
 						<span>Hover over</span>
 						<img class="popupIcons" src="assets/plus.png" />
 						<span>for more information</span>
 						<div class="break"></div>
+						<!--span>In 2008, SP secured ownership of the disused container offices from JTC Corporation. About 80 per cent of the materials used to build InnoVillage were recycled from there. InnoVillage received the Platinum Award in 2009 (special building category) because of features such as solar energy, solar tube, 80% recycle of materials and light sensors.</span-->
 					</div>
 				</div>
 			</div>
@@ -168,6 +169,7 @@
 				<!--Hotspots UI-->
 				<a-entity id="spots" hotspots>
 					<a-entity id="group-point1">
+						<span>for more information</span>						
 						<!--floor-->
 						<!-- <a-image
 							id="p1loc2spot"
@@ -187,23 +189,26 @@
 							rotation="0 180 90"
 							scale="0.9 0.9 0.9"
 						></a-image>							
-						<!-- <a-entity
+						<!--a-entity
 							id="dialog1"
 							position="-3.94 -0.30 -3.81"
 							dialog-popup="
 						title: AHU (Air Handling Unit);
 						body:-An air handling unit conditions and distributes air within a building;		  
 						image: hotspots/AHU.jpg;"
-						></a-entity> -->
-						<!--a-text
-							value="Chiller Room"
-							rotation="0 180 0"
-							wrap-count="20"
+						></a-entity-->
+						<a-text
+							value="In 2008, SP secured ownership of the disused container offices from JTC Corporation.\n\n About 80 per cent of the materials used to build InnoVillage were recycled from there. \n\n InnoVillage received the Platinum Award in 2009 (special building category) because of features such as solar energy, solar tube, 80% recycle of materials and light sensors."
+							rotation="0.43 -89.0 0.32"
+							width = "6"
+							scale = "1.05 1.05 1.05"
+							wrap-count="30"
 							font="assets/raleway.json"
+							linespace = "60"
 							shader="msdf"
-							position="-0.2 0 3.2"
-							align="center"
-						></a-text-->
+							position="5.96 -1.02 -7.0"
+							align="left"
+						></a-text>
 					</a-entity>
 					<a-entity id="group-point2" visible="false">
 						<!--floor-->
