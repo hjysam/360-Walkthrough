@@ -161,7 +161,7 @@ html {
 	visibility: hidden;
 }
 #leftHalf {
-	background: url(assets/ac.jpg);
+	background: url(assets/vlcsnap-2021-10-08-17h22m11s766.png);
 	background-size: cover;
 	width: 50%;
 	position: absolute;
@@ -183,17 +183,17 @@ html {
 }
 #title {
 	font-family: 'raleway';
-	font-size: 45px;
+	font-size: 30px;
 	margin-bottom: 10px;
 }
 #subtitle {
 	font-family: 'raleway';
-	font-size: 35px;
+	font-size: 30px;
 	margin-bottom: 10px;
 }
 #description {
 	font-family: 'raleway';
-	font-size: 18px;
+	font-size: 14px;
 	text-align: justify;
 	text-justify: inter-word;
 	margin-bottom: 20px;
@@ -552,8 +552,8 @@ html {
 		align-items: center;
 	}
 	#content {
-		width: 80%;
-		height: 400px;
+		width: 85%;
+		height: 550px;
 		background: rgba(255, 255, 255, 0.9);
 		border-radius: 20px;
 		margin: 0;
