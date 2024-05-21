@@ -1,47 +1,42 @@
+
+
 # 360-Walkthrough
 
-Welcome to the 360-Walkthrough repository, where you can explore immersive 360-degree walkthroughs which is powered by A-Frame. A Frame is an open-sourced web framework for building VR experiences.
+Welcome to the 360-Walkthrough repository! This is your gateway to immersive 360-degree walkthroughs, powered by the A-Frame framework—an open-source web framework designed for building virtual reality experiences.
 
-You may view the walkthrough in this link: https://sp-cems.github.io/360-Walkthrough/ 
+**Explore the walkthrough here:** [360-Walkthrough Demo](https://sp-cems.github.io/360-Walkthrough/)
 
-Note: Press: `<ctrl>` + `<alt>` + `i` to open the A-Frame Inspector when you are in the VR scene. 
+**Quick Tip:** Press `<ctrl>` + `<alt>` + `i` to open the A-Frame Inspector while you are in the VR scene.
 
 ![Alt text](assets/360walkthrough.png)
 
 ## Introduction
 
-This repository contains assets for creating 360-degree virtual experiences. It is designed to provide an interactive way to navigate through different environments using panoramic images and videos.
+This repository houses assets for creating 360-degree virtual experiences. It's crafted to offer an interactive way to explore various environments through panoramic images and videos.
 
 ## Contents
 
-- **360Images**: A collection of panoramic images for the walkthrough.
-- **Videos**: Video assets that complement the 360 images.
-- **Assets**: Additional resources required for the walkthrough.
-- **Hotspots**: Interactive elements that provide more information or navigation options.
-- **Lib**: Libraries and scripts essential for the walkthrough functionality.
-- **Styles.css**: The stylesheet that defines the look and feel of the walkthrough.
-
-## Viewing the Walkthrough
-
-To view the walkthrough, please visit the following link: 360-Walkthrough Demo
+- **360Images**: A collection of panoramic images used in the walkthrough.
+- **Videos**: Videos that enhance the 360-degree images.
+- **Assets**: Additional resources necessary for the walkthrough.
+- **Hotspots**: Interactive elements that provide more information or facilitate navigation.
+- **Lib**: Essential libraries and scripts for the walkthrough's functionality.
+- **Styles.css**: A stylesheet that defines the visual style of the walkthrough.
 
 ## Contribution
 
-If you would like to contribute to this project, please consider forking the repository and submitting a pull request.
+Interested in contributing? We encourage you to fork the repository and submit a pull request to make your mark!
 
 ## License
 
-This project is open-source and available under the MIT License.
+This project is open-sourced under the MIT License. Feel free to use and modify it as per your needs.
 
-Thank you for visiting our repository!
+Thank you for exploring our repository!
 
-## The location of the Walkthrough 
+## Location of the Walkthrough
 
-The 360 images are taken in Singapore Polytechnic. 
+The 360 images showcased here are captured at Singapore Polytechnic.
 
-## Contact 
+## Contact
 
-If you have any questions, please email to hjysam@gmail.com. 
-
-
-
+For any inquiries, please reach out via email at [hjysam@gmail.com](mailto:hjysam@gmail.com).
