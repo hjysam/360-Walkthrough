@@ -1,10 +1,12 @@
 # 360-Walkthrough
 
-Welcome to the 360-Walkthrough repository, where you can explore immersive 360-degree walkthroughs which the VR is powered by A-Frame Web Framework.
+Welcome to the 360-Walkthrough repository, where you can explore immersive 360-degree walkthroughs which is powered by A-Frame. A Frame is an open-sourced web framework for building VR experiences.
 
-You may view the walkthrough in this link: https://sp-cems.github.io/360-Walkthrough/
+You may view the walkthrough in this link: https://sp-cems.github.io/360-Walkthrough/ 
 
-!Alt text[assets/360walkthrough.png]
+Note: Press: `<ctrl>` + `<alt>` + `i` to open the A-Frame Inspector when you are in the VR scene. 
+
+![Alt text](assets/360walkthrough.png)
 
 ## Introduction
 
@@ -32,6 +34,10 @@ If you would like to contribute to this project, please consider forking the rep
 This project is open-source and available under the MIT License.
 
 Thank you for visiting our repository!
+
+## Contact 
+
+If you have any questions, please email to hjysam@gmail.com. 
 
 
 
