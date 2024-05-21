@@ -35,6 +35,10 @@ This project is open-source and available under the MIT License.
 
 Thank you for visiting our repository!
 
+## The location of the Walkthrough 
+
+The 360 images are taken in Singapore Polytechnic. 
+
 ## Contact 
 
 If you have any questions, please email to hjysam@gmail.com. 
